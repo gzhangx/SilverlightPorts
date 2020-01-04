@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="SilverlightPorts.PortUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="64" Height="64">
+   <UserControl.Resources>
+      <Storyboard x:Name="alertStory">
+         <DoubleAnimation
+          Storyboard.TargetName="alertWarn"
+          Storyboard.TargetProperty="Opacity"
+          From="0" To="0.8" Duration="0:0:1" RepeatBehavior="0:0:1" />
+      </Storyboard>
+   </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" MouseEnter="LayoutRoot_MouseEnter" MouseLeave="LayoutRoot_MouseLeave" MouseLeftButtonUp="LayoutRoot_MouseLeftButtonUp" MouseLeftButtonDown="LayoutRoot_MouseLeftButtonDown">
+        <Grid.Resources>            
+            <RadialGradientBrush x:Key="radial"
+		Center="0.5,0.5" GradientOrigin="0.44,0.5" RadiusX="0.49" RadiusY="0.5" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+                <GradientStop x:Name="brighter" Color="#FF7CCB5C" Offset="0.06" />
+                <GradientStop Color="#FF000B79" Offset="1" />
+            </RadialGradientBrush>
+        </Grid.Resources>
+       <Ellipse Fill="{StaticResource radial}" x:Name="surface"></Ellipse>
+       <Ellipse Fill="Red" x:Name="alertWarn" Visibility="Collapsed"></Ellipse>
+      <Canvas>
+         <Canvas Canvas.Top="8" Canvas.Left="8" x:Name="symbolPlate"></Canvas>
+      </Canvas>         
+        <Canvas VerticalAlignment="Bottom">
+            <Grid  x:Name="plate">
+                <TextBlock x:Name="plateText" Text="{Binding Name}" Foreground="White"></TextBlock>
+            </Grid>
+        </Canvas>
+    </Grid>
+</UserControl>

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="SilverlightPorts.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:SilverlightPorts"
+    mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480">
+  <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" Background="Black" x:Name="mainScrollViewer">            
+            <Canvas x:Name="groot" Background="Black" MouseLeftButtonDown="groot_MouseLeftButtonDown" MouseMove="groot_MouseMove" MouseLeftButtonUp="groot_MouseLeftButtonUp">
+            <Line x:Name="shipSendBand" Stroke="White" StrokeThickness="2" X1="0" Y1="0" Y2="0" X2="0"></Line>
+               <Grid x:Name="ShowDetailPan">
+                    <StackPanel>
+                        <Button x:Name="btnColonize" Content="Colonize" Click="Colonize_Click" Visibility="Collapsed" ></Button>
+                        <Button x:Name="btnShowDetail" Content="Show Detail" Click="btnShowDetail_Click" ></Button>
+                    </StackPanel>
+                </Grid>
+            </Canvas>
+   
+        </ScrollViewer>
+        <Grid Grid.Column="1">
+            <StackPanel Orientation="Vertical">
+                <local:DomainInfoDsp x:Name="domainInfo"></local:DomainInfoDsp>
+                <local:PortInfoDsp x:Name="portInfo"></local:PortInfoDsp>            
+               <TextBlock Text="=========="></TextBlock>
+               <TextBlock Text="Star Costa"></TextBlock>
+               <TextBlock x:Name="versiontxt"></TextBlock>
+               <TextBlock Text="http://www.zolohouse.com"></TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

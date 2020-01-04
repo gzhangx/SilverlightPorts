@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="SilverlightPorts.UnitControls.SmallExplosion"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="32" Height="32">
+    <Grid x:Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Ellipse Fill="Red" Width="3" Height="3" x:Name="red" HorizontalAlignment="Center" VerticalAlignment="Center"></Ellipse>
+        <Ellipse Fill="Yellow" x:Name="yellow" Width="0" Height="0" HorizontalAlignment="Center" VerticalAlignment="Center"> </Ellipse>
+    </Grid>
+</UserControl>

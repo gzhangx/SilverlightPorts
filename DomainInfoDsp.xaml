@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="SilverlightPorts.DomainInfoDsp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>            
+        <TextBlock Text="Domain"></TextBlock>
+        <TextBlock Grid.Column="1" Text="{Binding Name}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Generation"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Generation}"></TextBlock>
+      <TextBlock Grid.Row="2" Grid.Column="0" Text="AI Control"></TextBlock>
+      <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding LetAIControlMe, Mode=TwoWay}"></CheckBox>
+      
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Tax Rate"></TextBlock>
+        <ScrollBar Grid.Row="3" Grid.Column="1" Minimum="0.01" Maximum="0.5" Value="{Binding TaxRate, Mode=TwoWay}"  Orientation="Horizontal" IsEnabled="False"></ScrollBar>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="This Turn"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding MoneyRevenueThisTurn, Converter={StaticResource GenValConv},ConverterParameter=\{0:N0\}}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="sc"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding MoneyThisTurnForScience, Converter={StaticResource GenValConv},ConverterParameter=\{0:N0\}}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="mat"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding MoneyForShipMaintenance, Converter={StaticResource GenValConv},ConverterParameter=\{0:N0\}}"></TextBlock>
+    </Grid>
+</UserControl>

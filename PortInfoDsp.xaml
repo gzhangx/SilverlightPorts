@@ -1,0 +1,78 @@
+﻿<UserControl xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  x:Class="SilverlightPorts.PortInfoDsp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"     
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input"
+             >
+    <Grid x:Name="LayoutRoot">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{Binding Name}"></TextBlock>
+            <Grid>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition></ColumnDefinition>
+               <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+               <RowDefinition></RowDefinition>
+               <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+               <TextBlock Grid.Row="0" Grid.Column="0" Text="Population"></TextBlock>
+               <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Population}"></TextBlock>
+            <!--<TextBlock Text="{Binding DisplayPortCost, Converter={StaticResource GenValConv},ConverterParameter=\{0:N0\}}"></TextBlock>
+            <TextBlock Text="{Binding DisplayPortIncome, Converter={StaticResource GenValConv},ConverterParameter=\{0:N0\}}"></TextBlock>-->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Revenue"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding DisplayPortRevenue, Converter={StaticResource GenValConv},ConverterParameter=\{0:N0\}}"></TextBlock>
+            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Send To"/>
+                <input:AutoCompleteBox x:Name="acbSendTo" FilterMode="Contains" SelectionChanged="acbSendTo_SelectionChanged" >
+                    <input:AutoCompleteBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </input:AutoCompleteBox.ItemTemplate>
+                </input:AutoCompleteBox>
+                
+            </StackPanel>
+            <Button Content="Send" Click="SendButton_Click"></Button>
+            <data:DataGrid x:Name="grid" AutoGenerateColumns="False">
+                <data:DataGrid.Resources>
+                    <DataTemplate x:Key="DataTemplateSendCount">
+                        <Grid>
+                            <TextBox Margin="2,2,2,2" MaxWidth="800" 
+					VerticalAlignment="Top" Text="{Binding SendCount, Mode=TwoWay}" 
+					TextWrapping="Wrap" TextChanged="SendCountTextBox_TextChanged" />
+                        </Grid>
+                    </DataTemplate>
+                </data:DataGrid.Resources>
+                <data:DataGrid.Columns>
+                    <data:DataGridTextColumn Header="Gen" IsReadOnly="True" Binding="{Binding Generation}"></data:DataGridTextColumn>
+                    <data:DataGridTextColumn Header="Count" IsReadOnly="True" Binding="{Binding Count}"></data:DataGridTextColumn>
+                    <data:DataGridTemplateColumn Header="Send Count" CellTemplate="{StaticResource DataTemplateSendCount}"></data:DataGridTemplateColumn>
+                </data:DataGrid.Columns>
+            </data:DataGrid>
+            <Grid x:Name="BuildQueueGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Ship Build Queue"></TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CurrentBuildShipQueue, Mode=TwoWay}" TextChanged="ShipQueueTextBox_TextChanged"></TextBox>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Finish Percent"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding FinishPercent}"></TextBlock>
+                    
+            </Grid>
+        </StackPanel>
+        <Grid Background="Gray" Opacity="0.99" Visibility="Collapsed" x:Name="SelectSendToCover">
+            <StackPanel Height="80">
+                <TextBlock Text="Please Click on a Planet"></TextBlock>
+                <TextBlock Text="To Select Where to Send Ship"></TextBlock>
+                <Button Content="Cancel" Click="CancelSelectButton_Click"></Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

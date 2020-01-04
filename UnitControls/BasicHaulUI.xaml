@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="SilverlightPorts.BasicHaulUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+    <Grid x:Name="LayoutRoot" Width="128" Height="128">
+        <Grid.RenderTransform>
+            <RotateTransform x:Name="rotatTran" Angle="0"></RotateTransform>
+        </Grid.RenderTransform>
+        <Image Source="../Images/ship.png"></Image>
+        <Canvas x:Name="canv">
+        
+        </Canvas>
+    </Grid>
+</UserControl>

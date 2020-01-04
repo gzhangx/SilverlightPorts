@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="SilverlightPorts.BasicTurretUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <RadialGradientBrush x:Key="radial"
+		Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="0.5" RadiusY="0.5" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+                <GradientStop Color="#FFFFFFFF" Offset="0" />
+                <GradientStop Color="#FF000000" Offset="1" />
+            </RadialGradientBrush>
+            <LinearGradientBrush x:Key="linear"
+		StartPoint="0.5,0" EndPoint="0.5,1" 
+		SpreadMethod="Pad" ColorInterpolationMode="SRgbLinearInterpolation" >
+                <GradientStop Color="#FFFFFFFF" Offset="0" />
+                <GradientStop Color="#FFFFFFFF" Offset="1" />
+                <GradientStop Color="#FF000000" Offset="0.51" />
+            </LinearGradientBrush>
+            <Storyboard x:Name="firestory" Duration="0:0:1" >
+                <DoubleAnimation
+          Storyboard.TargetName="barrel"
+          Storyboard.TargetProperty="Width"
+          From="8" To="14" Duration="0:0:1"  />
+                <ColorAnimation Storyboard.TargetName="PointColor" Storyboard.TargetProperty="Color"
+                                 From="Red" To="Black" Duration="0:0:0.5"></ColorAnimation>
+            </Storyboard>
+        </Grid.Resources>
+<Grid.RenderTransform>
+            <RotateTransform x:Name="rotatTran" Angle="0"></RotateTransform>
+        </Grid.RenderTransform>
+        <Canvas x:Name="canv">
+            <Ellipse x:Name="mainOvl" Fill="{StaticResource radial}" Width="24" Height="24"></Ellipse>            
+            <Grid x:Name="barrel"  Width="14" Height="4"  Canvas.Top="10" Canvas.Left="12">
+            <Rectangle Fill="{StaticResource linear}"></Rectangle>
+            <Ellipse x:Name="pointOvl" Width="4" Height="4" HorizontalAlignment="Right">
+                    <Ellipse.Fill>
+                        <SolidColorBrush x:Name="PointColor" Color="Black" />
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Grid>
+        </Canvas>
+    </Grid>
+</UserControl>
